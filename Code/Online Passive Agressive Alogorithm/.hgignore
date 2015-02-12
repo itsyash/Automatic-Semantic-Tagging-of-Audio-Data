@@ -1,0 +1,19 @@
+syntax: glob
+bin/
+lib/
+debug/
+*.o
+*.a
+*~
+\#*
+.\#*
+core
+core.*
+*.core
+src/pa
+src/.*
+*.log
+*.aux
+*.dvi
+*.bbl
+TAGS

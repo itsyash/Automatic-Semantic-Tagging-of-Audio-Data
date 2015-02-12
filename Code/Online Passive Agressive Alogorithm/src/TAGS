@@ -1,0 +1,171 @@
+
+global.hpp,498
+#define _GLOBAL_H_2,19
+typedef double Rnum;13,187
+typedef std::vector<Rnum> VRnum;14,208
+typedef std::vector<VRnum> VVRnum;15,241
+typedef std::vector<VVRnum> VVVRnum;16,276
+typedef Rnum* RnumP;18,314
+typedef std::vector<RnumP> VRnumP;19,335
+typedef std::vector<VRnumP> VVRnumP;20,370
+typedef std::vector<VVRnumP> VVVRnumP;21,407
+typedef std::vector<int> VInt;23,447
+typedef std::vector<VInt> VVInt;24,478
+typedef std::vector<VVInt> VVVInt;25,511
+typedef std::vector<uint> VUInt;27,547
+
+main.cpp,321
+namespace pa 18,347
+const static std::string kName pa::kName19,362
+const static std::string kVersion pa::kVersion20,454
+const static std::string kAuthor pa::kAuthor21,499
+void output_info(pa::output_info23,578
+void analyze_config(34,880
+void set_parameter(58,1550
+void get_options(107,3438
+int main(117,3659
+
+my_math.hpp,288
+#define _MY_MATH_H_2,20
+namespace math 12,118
+template<class T> T log_sum math::log_sum15,142
+#define MINUS_LOG_EPSILON 27,521
+template<class T> T log_sum 28,551
+T square(41,880
+template<class T> T max 46,921
+template<class T> T sgn(51,1010
+template<class T> T logistic(56,1085
+
+pa.cpp,656
+namespace pa 15,181
+Rnum operator* pa::operator*16,196
+Rnum get_norm_square(25,407
+void update_weight(34,599
+void PA::Init(42,775
+void PA::StoreParam(48,835
+void PA::Start(105,2400
+void PA::Update(121,2586
+Rnum PA::KernelProduct(132,2756
+Rnum PA::Product(171,3678
+bool PA::Predict(182,3927
+void PA::AddIdValue(217,4717
+void PA::UpdateSample(223,4801
+void PA::ExamineModel(265,5910
+void PA::TrainInit(281,6175
+void PA::Train(291,6332
+void PA::Test(322,7013
+void PA::WriteModel(341,7417
+void PA::ReadModel(395,9015
+void PA::ReadCorpus(491,11140
+bool PA::ReadSample(525,12063
+void Corpus::Show(583,13263
+IdValue get_id_value(600,13612
+
+pa.hpp,3301
+#define _PA_H_2,15
+namespace pa 13,136
+class IdValue pa::IdValue14,151
+        IdValue(pa::IdValue::IdValue16,175
+        virtual ~IdValue(pa::IdValue::~IdValue17,219
+	const IdValue& Set(pa::IdValue::Set19,251
+        size_t id_;pa::IdValue::id_25,346
+        Rnum value_;pa::IdValue::value_26,366
+typedef std::vector<IdValue> VIdValue;29,399
+typedef std::vector<VIdValue> VVIdValue;30,438
+class Sample 34,528
+        Sample(Sample::Sample36,551
+        virtual ~Sample(Sample::~Sample37,572
+        void Clear(Sample::Clear43,704
+        size_t label_;Sample::label_47,772
+        VIdValue feature_;Sample::feature_48,795
+typedef std::vector<Sample> VSample;50,825
+class Corpus 53,864
+        Corpus(Corpus::Corpus55,887
+        virtual ~Corpus(Corpus::~Corpus56,921
+	size_t get_max_id_(Corpus::get_max_id_63,1074
+        VSample sample_;Corpus::sample_66,1125
+	size_t max_id_;Corpus::max_id_67,1150
+	std::string file_name_;Corpus::file_name_68,1167
+class PA 72,1197
+	static const Rnum kC PA::kC74,1216
+	static const Rnum kPolynomial_D PA::kPolynomial_D75,1245
+	static const Rnum kRBF_C PA::kRBF_C76,1285
+	static const int kMaxIteration PA::kMaxIteration77,1318
+	enum RunMode PA::RunMode78,1355
+	enum RunMode {kTrain,PA::RunMode::kTrain78,1355
+	enum RunMode {kTrain, kTest}PA::RunMode::kTest78,1355
+	enum Algo PA::Algo79,1386
+	enum Algo {kPA_O,PA::Algo::kPA_O79,1386
+	enum Algo {kPA_O, kPA_I,PA::Algo::kPA_I79,1386
+	enum Algo {kPA_O, kPA_I, kPA_II}PA::Algo::kPA_II79,1386
+	enum Kernel PA::Kernel80,1421
+	enum Kernel {kNone=PA::Kernel::kNone80,1421
+	enum Kernel {kNone=0x0,PA::Kernel::x080,1421
+	enum Kernel {kNone=0x0, kLinear=PA::Kernel::kLinear80,1421
+	enum Kernel {kNone=0x0, kLinear=0x1,PA::Kernel::x180,1421
+	enum Kernel {kNone=0x0, kLinear=0x1, kPolynomial=PA::Kernel::kPolynomial80,1421
+	enum Kernel {kNone=0x0, kLinear=0x1, kPolynomial=0x2,PA::Kernel::x280,1421
+	enum Kernel {kNone=0x0, kLinear=0x1, kPolynomial=0x2, kRBF=PA::Kernel::kRBF80,1421
+	enum Kernel {kNone=0x0, kLinear=0x1, kPolynomial=0x2, kRBF=0x3}PA::Kernel::x380,1421
+	PA(PA::PA82,1488
+	PA(PA::PA96,1782
+	virtual ~PA(PA::~PA112,2078
+	size_t GetWeightIndex(PA::GetWeightIndex123,2353
+	void set_verbose_(PA::set_verbose_127,2418
+	void set_kernel_(PA::set_kernel_131,2501
+	VRnum w_;PA::w_164,3219
+	Rnum cost_;PA::cost_165,3246
+	Rnum polynomial_d_;PA::polynomial_d_166,3293
+	Rnum rbf_c_;PA::rbf_c_167,3354
+	std::string corpus_file_;PA::corpus_file_168,3402
+	std::string model_file_;PA::model_file_169,3453
+	Corpus corpus_;PA::corpus_170,3502
+	short verbose_;PA::verbose_171,3540
+	std::map<PA::std::map172,3580
+	std::map<std::string,size_t> label_map_;PA::label_map_172,3580
+	std::map<PA::std::map173,3649
+	std::map<std::string,size_t> unk_map_;PA::unk_map_173,3649
+	std::vector<std::string> idx_label_;PA::idx_label_174,3764
+	RunMode run_mode_;PA::run_mode_175,3828
+	Algo algo_;PA::algo_176,3869
+	size_t label_num_;PA::label_num_177,3906
+	size_t feature_id_;PA::feature_id_178,3955
+	size_t iter_;PA::iter_179,4011
+	size_t err_;PA::err_180,4056
+	Rnum loss_;PA::loss_181,4107
+	VVIdValue kfeature_;PA::kfeature_182,4156
+	VVIdValue iindex_;PA::iindex_183,4217
+	Kernel kernel_;PA::kernel_184,4294
+
+param.hpp,344
+#define _PARAM_H_7,59
+class Param 14,170
+        bool Exist(Param::Exist16,192
+        T Get(Param::Get22,433
+        void Set(Param::Set31,817
+        virtual void Init(Param::Init37,1085
+	void Show(Param::Show39,1133
+        std::map<Param::std::map47,1341
+        std::map<std::string, std::string> conf_;Param::conf_47,1341
+
+util.cpp,294
+namespace util 18,309
+int endianness_judge(util::endianness_judge24,412
+istream& input_file_open(44,822
+void input_file_close(75,1582
+void to_lower(86,1764
+void to_upper(99,1999
+void remove_str(113,2262
+void exit_err_message(127,2509
+int get_random_number(139,2683
+int main(148,2837
+
+util.hpp,339
+#define _UTIL_H_2,17
+namespace util 13,135
+template<class T> void container_free(util::container_free78,1564
+template<class T> void container_free_vector(102,2039
+template<class T> void input_string_value 119,2380
+template <class T> void endian_swap(131,2600
+T lexical_cast(142,2855
+template <class T> T get_random_value(158,3181
